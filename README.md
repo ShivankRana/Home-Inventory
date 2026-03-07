@@ -1,15 +1,14 @@
 # Home Inventory Manager
 
-A professional Flask-based home inventory system to track items, serial numbers, locations, and storage boxes. Now updated with **User Authentication** and **Role-Based Access Control (RBAC)**.
+A professional Flask-based home inventory system to track items, serial numbers, locations, and storage boxes.
 
-## 📋 Features
-- **User Authentication**: Secure login system for authorized access.
-- **RBAC Support**:
-  - **Admin**: Full access (Add, Edit, and Delete items).
-  - **User**: Read-Only access (Viewing inventory only).
-- **Enhanced Schema**: Tracks Serial Numbers (SN), Geo-location, and precise room placement.
-- **Storage Logic**: Organize items inside specific Storage Boxes.
-- **Dynamic Seeding**: Automatically creates default users and rooms (Guest room, Master room, etc.) on the first run.
+## 📋 Configuration
+
+Create a `.env` file in the project root to configure the database data path:
+
+```bash
+DB_DATA_PATH=/data2/postgres_data/home-inventory
+```
 
 ## 🛠️ Installation (Local Pi)
 
@@ -29,20 +28,9 @@ A professional Flask-based home inventory system to track items, serial numbers,
 
 ### Web Interface
 - **Access:** `http://<YOUR_PI_IP>:8082`
-- **Login Required**:
-  - Enter your credentials to access the dashboard.
-  - **Admin Account**: For managing inventory (write-access).
-  - **User Account**: For viewing inventory (read-only).
 
-### CLI Commands (Manage via Terminal)
+### CLI Commands
 Add items directly from your Raspberry Pi terminal:
 ```bash
-# Format: flask add-item "Name" --sn "Serial" --cat "Category" --loc "Location"
 docker exec home-inventory_web_1 flask add-item "Archer C20" --sn "SN12345" --cat "Electronics" --loc "drawing_room"
 ```
-
-## 📋 Technology Stack
-- **Backend**: Python (Flask), SQLAlchemy, Flask-Login
-- **Database**: PostgreSQL (PostGIS ready)
-- **Frontend**: Bootstrap 5 (Responsive UI)
-- **Containerization**: Docker & Docker Compose

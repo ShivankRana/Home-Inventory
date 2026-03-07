@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: pass
       POSTGRES_DB: inventory
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ${DB_DATA_PATH}:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U user -d inventory"]
       interval: 10s
@@ -27,6 +27,3 @@ services:
     depends_on:
       db:
         condition: service_healthy
-
-volumes:
-  postgres_data:
