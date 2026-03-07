@@ -1,6 +1,15 @@
 # Home Inventory Manager
 
-A professional Flask-based home inventory system to track items, serial numbers, locations, and storage boxes.
+A professional Flask-based home inventory system to track items, serial numbers, locations, and storage boxes. Now updated with **User Authentication** and **Role-Based Access Control (RBAC)**.
+
+## 📋 Features
+- **User Authentication**: Secure login system for authorized access.
+- **RBAC Support**:
+  - **Admin**: Full access (Add, Edit, and Delete items).
+  - **User**: Read-Only access (Viewing inventory only).
+- **Enhanced Schema**: Tracks Serial Numbers (SN), Geo-location, and precise room placement.
+- **Storage Logic**: Organize items inside specific Storage Boxes.
+- **Dynamic Seeding**: Automatically creates default users and rooms (Guest room, Master room, etc.) on the first run.
 
 ## 🛠️ Installation (Local Pi)
 
@@ -19,8 +28,11 @@ A professional Flask-based home inventory system to track items, serial numbers,
 ## 🚀 How to Execute
 
 ### Web Interface
-- **Direct Access:** `http://<YOUR_PI_IP>:8082`
-- **Via Proxy Manager:** `http://inventory.local` (Requires `/etc/hosts` update on your PC).
+- **Access:** `http://<YOUR_PI_IP>:8082`
+- **Login Required**:
+  - Enter your credentials to access the dashboard.
+  - **Admin Account**: For managing inventory (write-access).
+  - **User Account**: For viewing inventory (read-only).
 
 ### CLI Commands (Manage via Terminal)
 Add items directly from your Raspberry Pi terminal:
@@ -29,7 +41,8 @@ Add items directly from your Raspberry Pi terminal:
 docker exec home-inventory_web_1 flask add-item "Archer C20" --sn "SN12345" --cat "Electronics" --loc "drawing_room"
 ```
 
-## 📋 Features
-- **Enhanced Schema:** Tracks Serial Numbers (SN), Geo-location, and precise room placement.
-- **Storage Logic:** Organize items inside specific Storage Boxes.
-- **Dynamic Seeding:** Automatically creates rooms (Guest room, Master room, etc.) on first run.
+## 📋 Technology Stack
+- **Backend**: Python (Flask), SQLAlchemy, Flask-Login
+- **Database**: PostgreSQL (PostGIS ready)
+- **Frontend**: Bootstrap 5 (Responsive UI)
+- **Containerization**: Docker & Docker Compose
